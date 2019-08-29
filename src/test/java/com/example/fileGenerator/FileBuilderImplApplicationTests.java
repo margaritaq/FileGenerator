@@ -1,4 +1,4 @@
-package com.example.FileGenerator;
+package com.example.fileGenerator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

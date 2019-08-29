@@ -1,4 +1,4 @@
-package com.example.FileGenerator.config;
+package com.example.fileGenerator.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

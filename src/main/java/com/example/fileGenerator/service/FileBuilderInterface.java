@@ -1,4 +1,4 @@
-package com.example.FileGenerator.service;
+package com.example.fileGenerator.service;
 
 import org.springframework.http.ResponseEntity;
 

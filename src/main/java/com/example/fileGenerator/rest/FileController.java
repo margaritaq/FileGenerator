@@ -1,5 +1,5 @@
-package com.example.FileGenerator.rest;
-import com.example.FileGenerator.service.FileBuilderImpl;
+package com.example.fileGenerator.rest;
+import com.example.fileGenerator.service.FileBuilderImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
