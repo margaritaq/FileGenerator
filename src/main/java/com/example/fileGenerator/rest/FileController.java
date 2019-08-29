@@ -12,7 +12,7 @@ public class FileController {
     private final static Logger log = LoggerFactory.getLogger(FileController.class);
 
     @Value("${files.path}")
-    public String destination;
+    public static String destination;
     @RequestMapping("/files/{fileId}")
     public ResponseEntity<Object> getFile(@PathVariable("fileId")int fileId){
         FileBuilderImpl file = new FileBuilderImpl();
