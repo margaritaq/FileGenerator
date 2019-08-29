@@ -2,11 +2,13 @@ package com.example.fileGenerator.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 
 import java.io.File;
@@ -14,16 +16,19 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 
 
+@Service
+public class FileBuilderServiceImpl implements FileBuilderService {
+    private final static Logger log = LoggerFactory.getLogger(FileBuilderServiceImpl.class);
 
-public class FileBuilderImpl implements FileBuilderInterface {
-    private final static Logger log = LoggerFactory.getLogger(FileBuilderImpl.class);
+    @Value("${files.path}")
+    public  String destination;
 
-    public ResponseEntity<Object> downloadFile(int fileId, String destination) {
+    public ResponseEntity<Object> generateFile(String name) {
         try {
-            String fileName = destination + fileId + ".txt";
+            String fileName = destination + name + ".txt";
 
             FileWriter writer = new FileWriter(fileName);
-            writer.write(String.valueOf(fileId));
+            writer.write(name);
             writer.flush();
             writer.close();
 
@@ -44,7 +49,8 @@ public class FileBuilderImpl implements FileBuilderInterface {
                     .body(resource);
             return responseEntity;
         } catch (Exception e) {
-            log.debug("Error encountered when downloading file!");
+            log.error("Error encountered when downloading file!", e);
+
             return new ResponseEntity<>("error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

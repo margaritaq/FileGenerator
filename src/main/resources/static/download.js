@@ -1,7 +1,7 @@
-function downloadFile(){
+function getFile(){
 var id= $('#id').val()
 $.ajax({
-    url: '/files/'+id,
+    url: '/files/file/'+id,
     type: 'POST',
     success: function() {
         alert ("File saved successufully!");
